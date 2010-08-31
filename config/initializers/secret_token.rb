@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Deployr::Application.config.secret_token = 'e91306aca9daeb5705f82c037a1fa8cab2f515c100abe32aab104247cfe7e1208986ecf0a5549e39f7d486b000469df1ad75bbcf4e811c291d671b4ece56a8a3'
+Deployr::Application.config.secret_token = 'ad6859924588cf1a6f5e724a361f908ec19cd831cf12708db2ad3243ea2240625d7687ba204a7643f8a750bb5722c57b48c25f6a96a4615f69b5b3de536a410d'
