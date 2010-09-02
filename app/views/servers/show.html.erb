@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hostname:</b>
+  <%= @server.hostname %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @server.username %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @server.password %>
+</p>
+
+<p>
+  <b>Connection:</b>
+  <%= @server.connection %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @server.port %>
+</p>
+
+<p>
+  <b>Default path:</b>
+  <%= @server.default_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_server_path(@server) %> |
+<%= link_to 'Back', servers_path %>

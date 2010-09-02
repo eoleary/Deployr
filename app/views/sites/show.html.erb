@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Domain:</b>
+  <%= @site.domain %>
+</p>
+
+<p>
+  <b>Staging server:</b>
+  <%= @site.staging_server_id %>
+</p>
+
+<p>
+  <b>Production server:</b>
+  <%= @site.production_server_id %>
+</p>
+
+<p>
+  <b>Staging path:</b>
+  <%= @site.staging_path %>
+</p>
+
+<p>
+  <b>Production path:</b>
+  <%= @site.production_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

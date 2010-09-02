@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  domain: MyString
+  staging_server_id: 1
+  production_server_id: 1
+  staging_path: MyString
+  production_path: MyString
+
+two:
+  domain: MyString
+  staging_server_id: 1
+  production_server_id: 1
+  staging_path: MyString
+  production_path: MyString
