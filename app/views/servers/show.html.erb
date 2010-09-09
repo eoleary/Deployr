@@ -34,7 +34,7 @@
   <b>Staging Sites:</b>
   <ul>
     <% @server.staging_sites.each do |site| -%>
-    <li>dev.<%= site.domain %></li>
+    <li><%= link_to "dev.#{site.domain}", site %></li>
     <% end -%>
   </ul>
 </p>
@@ -43,7 +43,7 @@
   <b>Production Sites:</b>
   <ul>
     <% @server.production_sites.each do |site| -%>
-    <li>www.<%= site.domain %></li>
+    <li><%= link_to "www.#{site.domain}", site %></li>
     <% end -%>
   </ul>
 </p>

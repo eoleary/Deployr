@@ -15,8 +15,8 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.domain %></td>
-    <td><%= site.staging_server_id %></td>
-    <td><%= site.production_server_id %></td>
+    <td><%= site.staging_server.hostname %></td>
+    <td><%= site.production_server.hostname %></td>
     <td><%= site.staging_path %></td>
     <td><%= site.production_path %></td>
     <td><%= link_to 'Show', site %></td>
