@@ -30,6 +30,23 @@
   <%= @server.default_path %>
 </p>
 
+<p>
+  <b>Staging Sites:</b>
+  <ul>
+    <% @server.staging_sites.each do |site| -%>
+    <li>dev.<%= site.domain %></li>
+    <% end -%>
+  </ul>
+</p>
+
+<p>
+  <b>Production Sites:</b>
+  <ul>
+    <% @server.production_sites.each do |site| -%>
+    <li>www.<%= site.domain %></li>
+    <% end -%>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_server_path(@server) %> |
 <%= link_to 'Back', servers_path %>

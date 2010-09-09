@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :staging_server_id %><br />
-    <%= f.text_field :staging_server_id %>
+    <%= f.collection_select :staging_server_id, Server.all, :id, :hostname, :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :production_server_id %><br />
-    <%= f.text_field :production_server_id %>
+    <%= f.collection_select :production_server_id, Server.all, :id, :hostname, :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :staging_path %><br />

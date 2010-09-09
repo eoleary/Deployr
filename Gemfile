@@ -12,3 +12,6 @@ gem 'devise', '1.1.2'
 
 # Will_paginate for pagination
 #gem 'will_paginate', '2.3.14'
+
+# Delayed job
+gem 'delayed_job'

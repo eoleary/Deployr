@@ -7,22 +7,22 @@
 
 <p>
   <b>Staging server:</b>
-  <%= @site.staging_server_id %>
+  <%= link_to @site.staging_server.hostname, @site.staging_server %>
 </p>
 
 <p>
   <b>Production server:</b>
-  <%= @site.production_server_id %>
+  <%= link_to @site.production_server.hostname, @site.production_server %>
 </p>
 
 <p>
   <b>Staging path:</b>
-  <%= @site.staging_path %>
+  <%= @site.staging_server.default_path + @site.staging_path %>
 </p>
 
 <p>
   <b>Production path:</b>
-  <%= @site.production_path %>
+  <%= @site.production_server.default_path + @site.production_path %>
 </p>
 
 
