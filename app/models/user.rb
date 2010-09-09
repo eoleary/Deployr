@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  # Validations
+  validates_format_of :email, :with => /@teamcolab\.com/, :message => "Only Team Colab members allowed"
 end

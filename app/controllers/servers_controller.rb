@@ -41,6 +41,7 @@ class ServersController < ApplicationController
   # POST /servers.xml
   def create
     @server = Server.new(params[:server])
+    @server.update_attribute(:type, params[:server][:type])
 
     respond_to do |format|
       if @server.save
@@ -57,6 +58,7 @@ class ServersController < ApplicationController
   # PUT /servers/1.xml
   def update
     @server = Server.find(params[:id])
+    @server.update_attribute(:type, params[:server][:type])
 
     respond_to do |format|
       if @server.update_attributes(params[:server])

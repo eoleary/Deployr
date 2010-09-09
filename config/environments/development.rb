@@ -25,5 +25,10 @@ Deployr::Application.configure do
   
   # Devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # STI Fix for not lazy loading classes in development environment
+  %w[server ftp_server sftp_server].each do |c|
+    require_dependency File.join("app","models","#{c}.rb")
+  end
 end
 

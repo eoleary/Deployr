@@ -21,15 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :connection %><br />
-    <%= f.text_field :connection %>
+    <%= f.label :type %><br />
+    <%= f.select :type, Server.select_options %>
   </div>
   <div class="field">
     <%= f.label :port %><br />
-    <%= f.text_field :port %>
+    <%= f.number_field :port, :min => 21, :max => 22, :step => 1 %>
   </div>
   <div class="field">
     <%= f.label :default_path %><br />

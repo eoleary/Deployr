@@ -4,7 +4,7 @@ class CreateServers < ActiveRecord::Migration
       t.string :hostname
       t.string :username
       t.string :password
-      t.string :connection
+      t.string :type
       t.integer :port
       t.string :default_path
 

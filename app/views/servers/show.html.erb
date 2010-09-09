@@ -12,12 +12,12 @@
 
 <p>
   <b>Password:</b>
-  <%= @server.password %>
+  <%= "*" * @server.password.length %>
 </p>
 
 <p>
-  <b>Connection:</b>
-  <%= @server.connection %>
+  <b>Type:</b>
+  <%= @server.class.select_name %>
 </p>
 
 <p>
