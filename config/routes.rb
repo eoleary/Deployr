@@ -1,8 +1,4 @@
 Deployr::Application.routes.draw do
-  resources :sites
-
-  resources :servers
-
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -36,6 +32,13 @@ Deployr::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
+  
+  resources :servers
+  resources :sites do
+    resources :gh_pushes do 
+      post 'commit', :on => :collection
+    end
+  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

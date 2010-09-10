@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902044542) do
+ActiveRecord::Schema.define(:version => 20100910083006) do
+
+  create_table "gh_pushes", :force => true do |t|
+    t.integer  "site_id"
+    t.text     "payload"
+    t.string   "ref"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "servers", :force => true do |t|
     t.string   "hostname"
@@ -31,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20100902044542) do
     t.string   "production_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gh_url"
   end
 
   create_table "users", :force => true do |t|

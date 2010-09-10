@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site:</b>
+  <%= @gh_push.site_id %>
+</p>
+
+<p>
+  <b>Payload:</b>
+  <%= @gh_push.payload %>
+</p>
+
+<p>
+  <b>Ref:</b>
+  <%= @gh_push.ref %>
+</p>
+
+
+<%= link_to 'Edit', edit_gh_push_path(@gh_push) %> |
+<%= link_to 'Back', gh_pushes_path %>

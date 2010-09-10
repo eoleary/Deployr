@@ -1,0 +1,27 @@
+<h1>Listing gh_pushes</h1>
+
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Payload</th>
+    <th>Ref</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gh_pushes.each do |gh_push| %>
+  <tr>
+    <td><%= gh_push.site_id %></td>
+    <td><%= gh_push.payload %></td>
+    <td><%= gh_push.ref %></td>
+    <td><%= link_to 'Show', gh_push %></td>
+    <td><%= link_to 'Edit', edit_gh_push_path(gh_push) %></td>
+    <td><%= link_to 'Destroy', gh_push, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gh push', new_gh_push_path %>

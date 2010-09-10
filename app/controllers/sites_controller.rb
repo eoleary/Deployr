@@ -25,7 +25,7 @@ class SitesController < ApplicationController
   # GET /sites/new.xml
   def new
     @site = Site.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @site }
@@ -41,7 +41,7 @@ class SitesController < ApplicationController
   # POST /sites.xml
   def create
     @site = Site.new(params[:site])
-
+    
     respond_to do |format|
       if @site.save
         format.html { redirect_to(@site, :notice => 'Site was successfully created.') }
