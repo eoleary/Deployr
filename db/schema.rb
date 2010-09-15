@@ -10,12 +10,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100910083006) do
+ActiveRecord::Schema.define(:version => 20100914041637) do
+
+  create_table "commits", :force => true do |t|
+    t.string   "gh_id"
+    t.text     "message"
+    t.datetime "timestamp"
+    t.string   "url"
+    t.text     "added"
+    t.text     "removed"
+    t.text     "modified"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "gh_pushes", :force => true do |t|
-    t.integer  "site_id"
-    t.text     "payload"
+    t.string   "before"
+    t.string   "after"
     t.string   "ref"
+    t.integer  "repository_id"
+    t.text     "payload"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gh_users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "repositories", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "pledgie"
+    t.text     "description"
+    t.string   "homepage"
+    t.integer  "watchers"
+    t.integer  "forks"
+    t.boolean  "private"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

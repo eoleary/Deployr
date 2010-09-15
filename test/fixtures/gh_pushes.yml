@@ -1,11 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  site_id: 1
-  payload: MyText
+  before: MyString
+  after: MyString
   ref: MyString
+  repository_id: 1
+  payload: MyText
 
 two:
-  site_id: 1
-  payload: MyText
+  before: MyString
+  after: MyString
   ref: MyString
+  repository_id: 1
+  payload: MyText

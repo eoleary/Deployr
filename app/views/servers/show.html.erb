@@ -33,19 +33,27 @@
 <p>
   <b>Staging Sites:</b>
   <ul>
+    <% if @server.staging_sites.length == 0 -%>
+      <li>No sites here!</li>
+    <% end -%>
     <% @server.staging_sites.each do |site| -%>
-    <li><%= link_to "dev.#{site.domain}", site %></li>
+      <li><%= link_to "dev.#{site.domain}", site %></li>
     <% end -%>
   </ul>
+  <%= link_to "Add a Site", :controller => "sites", :action => :new %>
 </p>
 
 <p>
   <b>Production Sites:</b>
   <ul>
+    <% if @server.production_sites.length == 0 -%>
+      <li>No sites here!</li>
+    <% end -%>
     <% @server.production_sites.each do |site| -%>
-    <li><%= link_to "www.#{site.domain}", site %></li>
+      <li><%= link_to "www.#{site.domain}", site %></li>
     <% end -%>
   </ul>
+  <%= link_to "Add a Site", :controller => "sites", :action => :new %>
 </p>
 
 <%= link_to 'Edit', edit_server_path(@server) %> |

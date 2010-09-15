@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :domain %><br />
-    <%= f.text_field :domain %>
+    <%= f.text_field :domain, :placeholder => "example.com" %>
   </div>
   <div class="field">
     <%= f.label :staging_server_id %><br />
@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :staging_path %><br />
-    <%= f.text_field :staging_path %>
+    <%= f.text_field :staging_path, :placeholder => "/dev" %>
   </div>
   <div class="field">
     <%= f.label :production_path %><br />
-    <%= f.text_field :production_path %>
+    <%= f.text_field :production_path, :placeholder => "/www" %>
   </div>
   <div class="actions">
     <%= f.submit %>

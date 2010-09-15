@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  url: MyString
+  pledgie: 1
+  description: MyText
+  homepage: MyString
+  watchers: 1
+  forks: 1
+  private: false
+  owner_id: 1
+
+two:
+  name: MyString
+  url: MyString
+  pledgie: 1
+  description: MyText
+  homepage: MyString
+  watchers: 1
+  forks: 1
+  private: false
+  owner_id: 1
