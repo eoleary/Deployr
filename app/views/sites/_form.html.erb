@@ -16,6 +16,10 @@
     <%= f.text_field :domain, :placeholder => "example.com" %>
   </div>
   <div class="field">
+    <%= f.label :gh_url, "Github URL" %><br />
+    <%= f.text_field :gh_url, :placeholder => "http://wwww.github.com/teamcolab/deployr" %>
+  </div>
+  <div class="field">
     <%= f.label :staging_server_id %><br />
     <%= f.collection_select :staging_server_id, Server.all, :id, :hostname, :prompt => true %>
   </div>

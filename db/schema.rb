@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100914041637) do
+ActiveRecord::Schema.define(:version => 20100920045322) do
 
   create_table "commits", :force => true do |t|
-    t.string   "gh_id"
+    t.string   "gh_push_id"
     t.text     "message"
     t.datetime "timestamp"
     t.string   "url"
@@ -23,7 +23,23 @@ ActiveRecord::Schema.define(:version => 20100914041637) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gh_id"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "gh_pushes", :force => true do |t|
     t.string   "before"
@@ -54,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100914041637) do
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "site_id"
   end
 
   create_table "servers", :force => true do |t|

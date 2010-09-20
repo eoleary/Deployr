@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   # Validations
-  validates_format_of :email, :with => /@teamcolab\.com/, :message => "Only Team Colab members allowed"
+  # E-mail validation, be sure to adjust so that you may register for deployr access
+  validates_format_of :email, :with => /@example\.com/, :message => "Only certain users may register"
 end
