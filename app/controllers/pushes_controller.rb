@@ -9,25 +9,26 @@ class PushesController < ApplicationController
       render :text => "Could not find site."
     else
       # Build the repository if necessary
+      owner = params["repository"].delete("owner")
       if @site.repository.nil?
-        repo = @site.build_repository
-        repo.name = params["repository"]["name"]
-        repo.url = params["repository"]["url"]
-        repo.pledgie = params["repository"]["pledgie"]
-        repo.description = params["repository"]["description"]
-        repo.watchers = params["repository"]["watchers"]
-        repo.forks = params["repository"]["forks"]
-        repo.private = params["repository"]["private"]
+        repo = @site.build_repository(params["repository"])
         
-        repo.owner = GhUser.find_by_email(params["repository"]["owner"]["email"])
+        repo.owner = GhUser.find_by_email(owner["email"])
         if repo.owner.nil?
-          repo.owner = repo.build_owner(params["repository"]["owner"])
+          repo.owner = repo.build_owner(owner)
         end
         
         repo.save
       else
         # Update the repository
-        # TODO Update the repo
+        repo.update_attributes(params["repository"])
+        
+        if repo.owner.email != owner["email"]
+          repo.owner = GhUser.find_by_email(owner["email"])
+          if repo.owner.nil?
+            repo.owner = repo.build_owner(owner)
+          end
+        end
       end
       
       # Process the Push
@@ -42,25 +43,18 @@ class PushesController < ApplicationController
       @push.repository = @site.repository
       @push.save
       
-      # Process the commits structure
+      # Process the commits
       params["commits"].each do |raw_commit|
-        commit = Commit.new
-        commit.gh_push = @push
-        commit.gh_id = raw_commit["id"]
-        commit.url = raw_commit["url"]
-        commit.message = raw_commit["message"]
-        commit.timestamp = raw_commit["timestamp"]
-        commit.added = raw_commit["added"]
-        commit.removed = raw_commit["removed"]
-        commit.modified = raw_commit["modified"]
+        raw_commit["gh_id"] = raw_commit.delete("id")
+        author = raw_commit.delete("author")
+        commit = @push.commits.build(raw_commit)
         
-        commit.author = GhUser.find_by_email(raw_commit["author"]["email"])
+        commit.author = GhUser.find_by_email(author["email"])
         if commit.author.nil?
-          commit.author = repo.build_owner(raw_commit["author"])
+          commit.author = repo.build_owner(author)
         end
-        
-        commit.save
       end
+      @push.save
       
       render :text => "OK"
     end
