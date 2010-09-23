@@ -40,7 +40,7 @@ module Deployr
     config.filter_parameters += [:password]
     
     # Configure the default javascript files
-    config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.2.min.js', 'rails']
+    config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.1.min.js', 'rails']
     
   end
 end
