@@ -15,3 +15,6 @@ gem 'devise', '1.1.2'
 
 # Delayed job
 gem 'delayed_job', '2.1.0.pre2'
+
+# Grit
+gem 'grit', '2.2.0'

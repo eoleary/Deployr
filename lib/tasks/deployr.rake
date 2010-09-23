@@ -6,15 +6,36 @@ end
 
 namespace :deployr do
   namespace :gh do
-    desc "Posts the Github Sample payload to the commit endpoint"
-    task :post => :environment do
-      require 'uri'
-      require 'net/http'
+    namespace :post do
+      desc "Posts the Github Sample payload to the commit endpoint"
+      task :sample => :environment do
+        require 'uri'
+        require 'net/http'
+        
+        payload = File.open("#{::Rails.root.to_s}/gh_sample.json").read
+        req = Net::HTTP.new('127.0.0.1', 3000)
+        puts req.post2('/commit', payload, {"Content-Type" => "application/json"}).body
+      end
       
-      payload = File.open("#{::Rails.root.to_s}/gh_sample.json").read
-      req = Net::HTTP.new('127.0.0.1', 3000)
-      puts req.post2('/commit', payload, {"Content-Type" => "application/json"}).body
-    end
+      desc "Posts to the specified site with the set parameters"
+      task :target, :site, :ref, :add_file, :remove_file, :modify_file, :needs => :environment do |t, args|
+        args.with_defaults(:site => 1, :ref => "master", :add_file => "", :remove_file => "", :modify_file => "")
+        
+        site = Site.find(args[:site].to_i)
+        
+        require 'digest/sha1'
+        
+        # Grab the template
+        template_file = File.new("#{::Rails.root.to_s}/gh_post.json.erb")
+        template = template_file.read
+        template_file.close
+        
+        b = binding
+        payload = ERB.new(template).result b
+        req = Net::HTTP.new('127.0.0.1', 3000)
+        puts req.post2('/commit', payload, {"Content-Type" => "application/json"}).body
+      end
+    end 
   end
   
   desc "Install the Deployr environment"

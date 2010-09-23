@@ -21,6 +21,7 @@ class PushesController < ApplicationController
         repo.save
       else
         # Update the repository
+        repo = @site.repository
         repo.update_attributes(params["repository"])
         
         if repo.owner.email != owner["email"]
@@ -41,7 +42,6 @@ class PushesController < ApplicationController
       @push.ref = params["ref"]
       @push.payload = raw_push
       @push.repository = @site.repository
-      @push.save
       
       # Process the commits
       params["commits"].each do |raw_commit|

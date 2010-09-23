@@ -1,0 +1,32 @@
+{
+  "before": "<%= Digest::SHA1.hexdigest 'before' %>",
+  "repository": {
+    "url": "<%= site.gh_url %>",
+    "name": "<%= site.domain %>",
+    "description": "Sample sample",
+    "watchers": 1,
+    "forks": 0,
+    "private": 1,
+    "owner": {
+      "email": "info@teamcolab.com",
+      "name": "teamcolab"
+    }
+  },
+  "commits": [
+    {
+      "id": "<%= Digest::SHA1.hexdigest 'commit' %>",
+      "url": "<%= "#{site.gh_url}/commit/#{Digest::SHA1.hexdigest 'commit'}" %>",
+      "author": {
+        "email": "info@teamcolab.com",
+        "name": "teamcolab"
+      },
+      "message": "Sample post",
+      "timestamp": "2008-02-15T14:57:17-08:00"<% if not args[:add_file].blank? %>,
+      "added": ["<%= args[:add_file] %>"]<% end %><% if not args[:modify_file].blank? %>,
+      "modified": ["<%= args[:modify_file] %>"]<% end %><% if not args[:remove_file].blank? %>,
+      "removed": ["<%= args[:remove_file] %>"]<% end %>
+    }
+  ],
+  "after": "<%= Digest::SHA1.hexdigest 'after' %>",
+  "ref": "refs/heads/<%= args[:ref] %>"
+}

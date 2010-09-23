@@ -11,7 +11,7 @@ Installation
 Once you have met all of the requirements listed above you must run the install rake task to setup the appropriate directories and configuration files. The simple method involves invoking the deployr:install rake task:
     rake deployr:install
 The install task may also be customized with the following parameters (in this order):
- * **working_directory**: The directory where Deployr will store all of its local working copies
+* **working_directory**: The directory where Deployr will store all of its local working copies
 For example:
     rake deployr:install[/tmp/deployr]
 

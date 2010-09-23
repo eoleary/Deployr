@@ -4,7 +4,7 @@ class GhPush < ActiveRecord::Base
   
   # Active Record Associations
   belongs_to :repository
-  has_many :commits
+  has_many :commits, :dependent => :destroy
   
   def path
     case self.ref
@@ -16,15 +16,20 @@ class GhPush < ActiveRecord::Base
   end
   
   def after_create
-    case self.ref
-    when "refs/head/staging" then
-      self.commits.each do |commit|
-        self.site.staging_server.push_commit(commit)
-      end
-    when "refs/head/production" then
-      self.commits.each do |commit|
-        self.site.production_server.push_commit(commit)
-      end
+    if ["master", "staging", "production"].include? self.short_ref
+      self.push_changes
     end
   end
+  
+  # Helpers
+  def short_ref
+    self.ref.split("/").pop
+  end
+  
+  # Delayed Jobs
+  def push_changes
+    self.repository.site.update_working_copy self
+    self.repository.site.push_working_copy self unless self.short_ref.eql? "master"
+  end
+  handle_asynchronously :push_changes
 end
