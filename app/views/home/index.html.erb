@@ -1,2 +1,88 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="grid_24">
+  Dashboard
+</div>
+<section class="grid_12">
+  <header>Servers</header>
+  <table>
+    <thead>
+      <tr>
+        <th>Hostname</th>
+        <th>Staging Sites</th>
+        <th>Production Sites</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Server.all(:limit => 5).each do |server| -%>
+        <tr>
+          <td><%=h server.hostname %></td>
+          <td><%=h server.staging_sites.length %></td>
+          <td><%=h server.production_sites.length %></td>
+          <td><%= link_to "View", server %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <a href="/servers">More</a>
+</section>
+<section class="grid_12">
+  <header>Sites</header>
+  <table>
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Site.all(:limit => 5).each do |site| -%>
+        <tr>
+          <td><%=h site.domain %></td>
+          <td><%= link_to "View", site %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <a href="/sites">More</a>
+</section>
+<div class="clear"></div>
+<section class="grid_12">
+  <header>Pushes</header>
+  <table>
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Ref</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% GhPush.all(:limit => 5).each do |push| -%>
+        <tr>
+          <td><%=h push.repository.site.domain %></td>
+          <td><%=h push.short_ref %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <a href="/">More</a>
+</section>
+<section class="grid_12">
+  <header>Jobs</header>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Attempts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Delayed::Backend::ActiveRecord::Job.all(:limit => 5).each do |job| -%>
+        <tr>
+          <td><%=h job.id %></td>
+          <td><%=h job.attempts %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <a href="/">More</a>
+</section>

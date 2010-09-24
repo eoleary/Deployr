@@ -7,10 +7,48 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+  <header class="container_24">
+    <h1>Deployr</h1>
+    <em>Git Deployment Tool</em>
+  </header>
+  <div id="navigation" class="container_24 clearfix">
+    <div class="grid_20">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/sites">Sites</a></li>
+        <li><a href="/servers">Servers</a></li>
+        <li><a href="/">Pushes</a></li>
+        <li><a href="/">Jobs</a></li>
+        <li><a href="/">Logs</a></li>
+      </ul>
+    </div>
+    <div id="auth" class="grid_4">
+      <% if current_user.nil? -%>
+        <a href="/sign_in">Sign In</a>
+      <% else -%>
+        <a href="/sign_out">Sign Out</a>
+      <% end -%>
+    </div>
+  </div>
+  <% if notice or alert -%>
+  <div id="notices" class="container_24 clearfix">
+    <% if notice -%>
+      <div class="grid_24 notice">
+        <%= notice %>
+      </div>
+    <% end -%>
+    <% if alert -%>
+      <div class="grid_24 alert">
+        <%= alert %>
+      </div>
+    <% end -%>
+  </div>
+  <% end -%>
+  <div id="main" class="container_24 clearfix">
+    <%= yield %>
+  </div>
+  <footer class="container_24">
+    &copy; 2010
+  </footer>
 </body>
 </html>
