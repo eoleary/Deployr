@@ -84,7 +84,7 @@ class Site < ActiveRecord::Base
       push.commits.each do |commit|
         # Remove the appropriate files
         commit.removed.each do |path|
-          server.remove_file path, "#{self.working_directory}#{path}"
+          server.remove_file path
         end unless commit.removed.nil?
         
         # Modify the appropriate files

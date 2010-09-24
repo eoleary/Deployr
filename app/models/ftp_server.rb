@@ -1,5 +1,8 @@
 class FtpServer < Server
-
+  
+  @connection = nil
+  @current_env_path = nil
+  
   def self.select_name
     "FTP Server"
   end
@@ -35,23 +38,54 @@ class FtpServer < Server
   #end
   #handle_asynchronously :push_commit
   
-  def connect
-    puts "Connected to #{self.hostname}"
+  def connect env_path
+    puts "Connected to #{self.hostname}, #{env_path}"
+    @connection = Net::FTP.new self.hostname
+    @connection.login self.username, self.password
+    @current_env_path = env_path
   end
   
   def disconnect
     puts "Disconnected from #{self.hostname}"
+    @connection.close
   end
   
-  def remove_file dest_path, src_path
+  def remove_file dest_path
     puts "Removed file #{dest_path}"
+    self.goto_root
+    self.ch_dir dest_path
+    @connection.delete File.basename(dest_path)
+    
+    # TODO removing a directory
   end
   
   def modify_file dest_path, src_path
     puts "Modified file #{dest_path}"
+    self.goto_root
+    self.ch_dir dest_path, true
+    @connection.putbinaryfile src_path
   end
   
   def add_file dest_path, src_path
     puts "Added file #{dest_path}"
+    self.goto_root
+    self.ch_dir dest_path, true
+    @connection.putbinaryfile src_path
+  end
+  
+  def ch_dir dest_dir, force = false
+    puts "Changing Directory #{dest_dir}"
+    parts = dest_dir.split("/")
+    parts.each do |part|
+      @connection.chdir(part)
+    end
+  end
+  
+  def mk_dir path
+    puts "Making Path #{path}"
+  end
+  
+  def goto_root
+    self.ch_dir "#{self.default_path}#{@current_env_path}"
   end
 end
