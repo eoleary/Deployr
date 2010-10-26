@@ -46,6 +46,115 @@ header h1 {
   border-bottom-left-radius: 5px;
 }
 
+#main section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#main section header {
+  font-weight: bold;
+  font-size: 13px;
+  color: #fcfcfc;
+  
+  padding: 5px;
+  
+  background: #6f6f6f;
+  
+  border: 1px solid #ababab;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+#main section article {
+  padding: 5px;
+  
+  border-bottom: 1px solid #ababab;
+  border-left: 1px solid #ababab;
+  border-right: 1px solid #ababab;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
 footer {
   padding: 15px 15px;
+}
+
+table {
+  width: 100%;
+  
+  border: 1px solid #c2c6c9;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+table th,
+table td.heading {
+  background: #6F6F6F;
+  color: #fcfeff;
+  padding: 6px;
+  font-weight: bold;
+}
+
+table th a,
+table th a:link,
+table th a:visited,
+table td.heading a,
+table td.heading a:link,
+table td.heading a:visited {
+	font-weight: bold !important;
+	color: #fcfeff;
+	text-decoration: underline;
+}
+
+table td {
+  padding: 6px;
+  border: 1px solid #cccccc;
+}
+
+table td.label {
+	font-weight: bold;
+	border-right: none;
+	vertical-align: top;
+}
+table td.label span {
+	font-weight: normal;
+}
+
+table td.actions {
+	white-space: nowrap;
+}
+
+table td.label {
+	white-space: nowrap;
+}
+table td.heading a {
+	color: #ffffff;
+}
+table td.label.split {
+	border-bottom: none;
+}
+table td.label.actions {
+	padding: 0px 0px 6px 6px;
+	font-weight: normal;
+	vertical-align: bottom;
+}
+table td.label.actions a img {
+	border: none;
+}
+table td.label em {
+	font-weight: normal;
+}
+
+table td p,
+table td div {
+  margin: 3px;
+  padding: 0;
 }

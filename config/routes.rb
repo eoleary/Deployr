@@ -8,6 +8,8 @@ Deployr::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   match 'commit' => 'pushes#commit', :as => :commit, :via => ["get", "post"]
+  match 'pushes' => 'pushes#index'
+  match 'pushes/:id' => 'pushes#show'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

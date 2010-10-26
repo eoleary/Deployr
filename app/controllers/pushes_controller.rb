@@ -36,6 +36,7 @@ class PushesController < ApplicationController
       raw_push = params
       raw_push.delete("controller")
       raw_push.delete("action")
+      
       @push = GhPush.new
       @push.before = params["before"]
       @push.after = params["after"]
@@ -58,5 +59,13 @@ class PushesController < ApplicationController
       
       render :text => "OK"
     end
+  end
+  
+  def index
+    @pushes = GhPush.all
+  end
+  
+  def show
+    @push = GhPush.find(params[:id])
   end
 end

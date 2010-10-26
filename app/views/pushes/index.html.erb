@@ -1,0 +1,23 @@
+<h1>Listing Pushes</h1>
+
+<table>
+  <tr>
+    <th>Before</th>
+    <th>After</th>
+    <th>Ref</th>
+    <th>Commits</th>
+    <th></th>
+  </tr>
+
+<% @pushes.each do |push| %>
+  <tr>
+    <td><%=h push.before[0..5] %></td>
+    <td><%=h push.after[0..5] %></td>
+    <td><%=h push.ref %></td>
+    <td><%=h push.commits.count %></td>
+    <td><%= link_to 'Show', "/pushes/#{push.id}" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
